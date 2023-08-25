@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+/* Import fonts: Noto Sans KR, sans & serif */
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Serif+KR&display=swap'); */
+
+/* Font Awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* import local fonts */
+@font-face {
+  /* Reference name */
+  font-family: 'Noto Sans KR';
+  /* For multiple files use commas, ex: url(), url(), ... */
+  src: url('/fonts/NotoSansKR-Regular.otf'), url('/fonts/NotoSerifKR-Regular.otf');
+}
+
+/* || VARIABLES */
+:root {
+  --theme-rounded-base: 20px;
+  --theme-rounded-container: 4px;
+
+  --theme-font-family-base: 'Noto Sans KR', sans-serif;
+  --theme-font-family-heading: 'Noto Sans KR', sans-serif;
+}
+
+/* begin Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* end Reset */
+
+html {
+  scroll-behavior: smooth; /* 부드러운 스크롤 */
+  font-family: var(--theme-font-family-base);
+  /* font-size: 1.5rem; */
+  font-size: clamp(1rem, 2.2vh, 1.5rem);
+}
+
+body {
+  min-height: 100vh;
+
+  /* variables 가 정의되어 있지 않으면 적용되지 않는다 */
+  background-color: var(--BGCOLOR);
+  background-image: var(--BGIMAGE);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea {
+  font: inherit;
+}
+
+.wrapper {
+  /* outline 은 box 사이즈에 포함되지 않음 */
+  outline: 2px solid purple;
+  outline-offset: -2px;
+}
+
+/* || Utility classes */
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.offscreen {
+  position: absolute;
+  left: -10000px;
+}
+
+.center {
+  text-align: center;
+}

@@ -1,0 +1,195 @@
+<svelte:head>
+  <title>CSS Mini-Project: Profile Cards</title>
+</svelte:head>
+
+<header>
+  <h1>Our Staff</h1>
+  <nav>
+    <a href="#profile1">Joe</a>
+    <a href="#profile2">Matt</a>
+    <a href="#profile3">Jane</a>
+  </nav>
+</header>
+
+<main>
+  <article id="profile1" class="card">
+    <figure>
+      <img src="/images/profile1-500x500.png" alt="Joe Coder" width="500" height="500" />
+      <figcaption>Joe Coder</figcaption>
+    </figure>
+    <p><q>I code stuff.</q></p>
+  </article>
+  <article id="profile2" class="card">
+    <figure>
+      <img src="/images/profile2-500x500.png" alt="Matt Designer" width="500" height="500" />
+      <figcaption>Matt Designer</figcaption>
+    </figure>
+    <p><q>I design stuff.</q></p>
+  </article>
+  <article id="profile3" class="card">
+    <figure>
+      <img src="/images/profile3-500x500.png" alt="Jane Dev Rel" width="500" height="500" />
+      <figcaption>Jane <span class="nowrap">Dev Rel</span></figcaption>
+    </figure>
+    <p><q>I teach stuff.</q></p>
+  </article>
+</main>
+
+<footer>
+  <p>&copy; Acme Co.</p>
+</footer>
+
+<style lang="postcss">
+  /* Component classes */
+
+  header,
+  footer {
+    position: sticky;
+    background-color: #1e293b;
+    color: whitesmoke;
+    text-align: center;
+  }
+
+  header {
+    top: 0;
+  }
+
+  nav {
+    background-color: #fff;
+    padding: 0.5rem;
+    border-bottom: 2px solid #000;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-evenly;
+
+    a,
+    a:visited {
+      color: #000;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      color: hsla(0, 0%, 20%, 0.6);
+    }
+  }
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  footer {
+    bottom: 0;
+  }
+
+  /* || PROFILE CARD */
+  .card {
+    scroll-margin-top: 8rem;
+    width: min(100%, 350px);
+    background-color: #cbd5e1;
+    border: 2px solid #000;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    figure {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+
+    img {
+      border: 5px double #333;
+      border-radius: 50%;
+    }
+
+    figcaption {
+      font-size: 2rem;
+      font-weight: bolder;
+      margin: 1rem;
+      text-align: center;
+    }
+  }
+
+  /* || SMALL */
+  @media screen and (min-width: 576px) {
+    main {
+      justify-content: center;
+      flex-flow: row wrap;
+      padding: 1rem;
+    }
+    .card {
+      width: min(100%, 400px);
+
+      &:last-child {
+        order: -1; /* 첫번째로 만들기 */
+      }
+    }
+  }
+
+  /* || MEDIUM */
+  @media screen and (min-width: 768px) {
+    nav {
+      display: none;
+    }
+    .card {
+      width: min(100%, 325px);
+
+      figure {
+        flex-flow: column-reverse;
+      }
+      p {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  /* || LARGE */
+  @media screen and (min-width: 992px) {
+    .card {
+      width: min(100%, 400px);
+
+      &:nth-child(2) {
+        order: -1; /* 첫번째로 만들기 */
+      }
+    }
+  }
+
+  /* || XL  */
+  @media screen and (min-width: 1200px) {
+    .card {
+      width: min(calc(100% / 3 - 1rem), 500px);
+    }
+  }
+
+  /* || MOBILE DEVICE LANDSCAPE  */
+  @media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    nav {
+      display: none;
+    }
+
+    main {
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      align-items: stretch;
+    }
+    .card {
+      width: min(calc(100% / 3 - 0.25rem), 200px);
+
+      figcaption,
+      p {
+        font-size: 1.25rem;
+      }
+    }
+  }
+</style>
